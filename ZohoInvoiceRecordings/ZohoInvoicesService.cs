@@ -60,8 +60,7 @@ namespace ZohoInvoiceRecordings
                     continue;
                 }
 
-
-                InvoiceRoot invoice = null;
+                InvoiceRoot invoice;
 
                 try
                 {
@@ -97,8 +96,7 @@ namespace ZohoInvoiceRecordings
 
                 if (invoice.Message == "success" && invoice.Invoices != null && invoice.Invoices.Count == 1)
                 {
-                
-                    Payment payment = new Payment()
+                    Payment payment = new()
                     {
                         Amount = item.GetAmount(),
                         BankCharges = 0,
