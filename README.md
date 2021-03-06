@@ -1,8 +1,20 @@
 # ZohoInvoicePaymentRegistrationViaCSV
-A simple console application for registering invouice payment records based on a CSV file
+A simple application for registering invoice payment records based on a Knab transactions CSV file.
 
+# To run this application
 
-## Get accesstoken
+1. Fill in the properties in the appsettings.json
+    - AccessToken: The accesstoken (see: Getting an accesstoken)
+    - CustomerId: the zoho customerId for which the payments should be created
+    - TransactionsFile: The path to the knab banking transactions file
+    - OutputFile: The path used for creating a output file (so you can see the log)
+
+# Limitations
+- The extraction of the invoice number from the banking-transactions is hardcoded. It expects a invoicenumber in the form of "INV-20210001" or "20210001"
+- PaymentMode is hardcoded to "banktransfer"
+- Payment description is hardcoded to "Betaling ontvangen voor factuur {output.InvoiceNumber}"
+
+## Getting an accesstoken
 
 1. Go to: https://api-console.zoho.com/
 2. Create a "Self client"
