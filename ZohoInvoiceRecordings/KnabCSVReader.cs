@@ -37,18 +37,21 @@ namespace ZohoInvoiceRecordings
             StringBuilder sb = new();
             string line;
             int counter = 0;
+
             // Read the file and display it line by line.  
-            System.IO.StreamReader file =
-                new System.IO.StreamReader(filename);
-
-            while ((line = file.ReadLine()) != null)
+            using (System.IO.StreamReader file =
+                new(filename))
             {
-                System.Console.WriteLine(line);
-                sb.AppendLine(line.TrimEnd(new char[] { ';' }));
-                counter++;
-            }
 
-            file.Close();
+                while ((line = file.ReadLine()) != null)
+                {
+                    System.Console.WriteLine(line);
+                    sb.AppendLine(line.TrimEnd(new char[] { ';' }));
+                    counter++;
+                }
+
+                file.Close();
+            }
 
             System.IO.File.WriteAllText(filename, sb.ToString());
         }
